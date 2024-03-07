@@ -8,7 +8,7 @@ type Props = {
 
 const ProductPage = async({params}: Props) => {
     const {productId} = params;
-    const product = await prismadb.product.findUnique({
+    const product = (productId === "new") ? null : await prismadb.product.findUnique({
         where: {
             id: productId
         },

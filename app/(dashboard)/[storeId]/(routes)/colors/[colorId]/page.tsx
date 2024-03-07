@@ -8,7 +8,7 @@ type Props = {
 
 const ColorPage = async({params}: Props) => {
     const {colorId} = params;
-    const color = await prismadb.color.findUnique({
+    const color = (colorId === "new") ? null : await prismadb.color.findUnique({
         where: {
             id: colorId
         }

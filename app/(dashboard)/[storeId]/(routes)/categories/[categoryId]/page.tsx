@@ -8,7 +8,7 @@ type Props = {
 
 const CategoryPage = async({params}: Props) => {
     const {categoryId, storeId} = params;
-    const category = await prismadb.category.findUnique({
+    const category = (categoryId === "new") ? null : await prismadb.category.findUnique({
         where: {
             id: categoryId
         }

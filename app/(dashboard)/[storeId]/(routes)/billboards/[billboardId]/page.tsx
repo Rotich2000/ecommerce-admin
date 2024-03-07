@@ -8,7 +8,9 @@ type Props = {
 
 const BillboardPage = async({params}: Props) => {
     const {billboardId} = params;
-    const billboard = await prismadb.billboard.findUnique({
+    const billboard = (billboardId === "new")
+    ? null
+    : await prismadb.billboard.findUnique({
         where: {
             id: billboardId
         }
